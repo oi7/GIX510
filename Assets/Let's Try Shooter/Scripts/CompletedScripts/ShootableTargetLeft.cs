@@ -14,8 +14,9 @@ public class ShootableTargetLeft : MonoBehaviour {
 		//Check if health has fallen below zero
 		if (currentHealth <= 0) 
 		{
-			//if health has fallen below zero, deactivate it 
-			gameObject.SetActive (false);
-		}
+            //if health has fallen below zero, change its position and size 
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+            gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+        }
 	}
 }
