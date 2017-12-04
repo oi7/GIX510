@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ShootableBox : MonoBehaviour {
+public class ShootableTargetLeft : MonoBehaviour {
 
 	//The box's current health point total
-	public int currentHealth = 5;
+	public int currentHealth = 1;
 
 	public void Damage(int damageAmount)
 	{
