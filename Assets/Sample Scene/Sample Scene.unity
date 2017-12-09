@@ -561,7 +561,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a941148556d895946a4adcc5441c5a83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 1
 --- !u!1 &91673297
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,7 +569,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 91673298}
-  - component: {fileID: 91673300}
   - component: {fileID: 91673299}
   m_Layer: 0
   m_Name: Targets
@@ -613,17 +611,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftTarget: {fileID: 648145845}
   rightTarget: {fileID: 81639133}
---- !u!114 &91673300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 91673297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d85c8d4e9770624f98589e58d78c238, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  lcurrentHealth: 5
+  rcurrentHealth: 5
 --- !u!1 &121066358
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,7 +1135,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 195575608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 695.5, y: 207.5, z: 0}
+  m_LocalPosition: {x: 694, y: 205.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 433855484}
@@ -1579,7 +1568,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e5a2cd8e323b3b42a7f5a6c5d0e58a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 3
 --- !u!54 &379328339
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2364,7 +2352,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1651181272144042, guid: 042142d01b081ab4ca555ec74a04c2cb, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 042142d01b081ab4ca555ec74a04c2cb, type: 2}
@@ -2645,7 +2633,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85de2d2f3877ca1429dcadeb7145622b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 1
 --- !u!23 &648145849
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6018,7 +6005,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e5a2cd8e323b3b42a7f5a6c5d0e58a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 3
 --- !u!54 &1628327679
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7451,7 +7437,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2101446815
 Transform:
   m_ObjectHideFlags: 0

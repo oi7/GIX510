@@ -55,16 +55,17 @@ public class RayCastShootComplete : MonoBehaviour {
 				// Set the end position for our laser line 
 				laserLine.SetPosition (1, hit.point);
 
-				// Get a reference to a health script attached to the collider we hit
-				ShootableTargetLeft healthLeft = hit.collider.GetComponent<ShootableTargetLeft>();
+                // Get a reference to a health script attached to the collider we hit
+                ShootableTargetLeft healthLeft = hit.collider.GetComponent<ShootableTargetLeft>();
                 ShootableTargetRight healthRight = hit.collider.GetComponent<ShootableTargetRight>();
+               
 
                 // If there was a health script attached for left target
                 if (healthLeft != null)
-				{
+                {
                     // Call the damage function of that script, passing in our gunDamage variable
-                    healthLeft.Damage (gunDamage);
-				}
+                    healthLeft.Damage(gunDamage);
+                }
 
                 // If there was a health script attached for right target
                 if (healthRight != null)
@@ -72,9 +73,14 @@ public class RayCastShootComplete : MonoBehaviour {
                     // Call the damage function of that script, passing in our gunDamage variable
                     healthRight.Damage(gunDamage);
                 }
+                    //if (target != null)
+                    //{
+                    //    target.Damage(gunDamage);
 
-                // Check if the object we hit has a rigidbody attached
-                if (hit.rigidbody != null)
+                    //}
+
+                    // Check if the object we hit has a rigidbody attached
+                    if (hit.rigidbody != null)
 				{
 					// Add force to the rigidbody we hit, in the direction from which it was hit
 					hit.rigidbody.AddForce (-hit.normal * hitForce);

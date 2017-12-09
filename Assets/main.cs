@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class main : MonoBehaviour {
     FoveInterface f;
+    int countTime = 1;
 
     // Use this for initialization
     void Start () {
@@ -23,45 +24,32 @@ public class main : MonoBehaviour {
     
         if (isHit)
         {
-            if (hit.collider.tag == "desk") 
+            ShootableTargetLeft healthLeft = hit.collider.GetComponent<ShootableTargetLeft>();
+            ShootableTargetRight healthRight = hit.collider.GetComponent<ShootableTargetRight>();
+
+
+            // If there was a health script attached for left target
+            if (healthLeft != null)
             {
-                print("This is a desk");
+                // Call the damage function of that script, passing in our gunDamage variable
+                healthLeft.Damage(countTime);
             }
-            else if(hit.collider.tag == "cube")
+
+            // If there was a health script attached for right target
+            if (healthRight != null)
             {
-                print("This is a cube");
+                // Call the damage function of that script, passing in our gunDamage variable
+                healthRight.Damage(countTime);
             }
+         
+            
+    }
+}
+
         }
       
+  
    
-
-       //if (Physics.Raycast(
-       //         headAngles,
-       //         headRotation,
-       //         out hitInfo,
-       //         20.0f,
-       //         Physics.DefaultRaycastLayers))
-       // {
-           
-       //     // If the Raycast has succeeded and hit a hologram
-       //     // hitInfo's point represents the position being gazed at
-       //     // hitInfo's collider GameObject represents the hologram being gazed at
-
-       // }
-    }
     
 
 
-    Vector2 GetAngles(Vector3 direction, Vector3 forward, Vector3 up)
-    {
-        Vector3 directionOnPlane = Vector3.ProjectOnPlane(direction, forward);
-        Vector3 upOnPlane = Vector3.ProjectOnPlane(up, forward);
-        // angle between direct and forward
-        float theta = Vector3.Angle(direction, forward);
-        // angle on visual plane
-        float phi = Vector3.Angle(directionOnPlane, upOnPlane);
-        float sign = Mathf.Sign(Vector3.Dot(Vector3.Cross(directionOnPlane, upOnPlane), forward));
-        phi = -(phi * sign - 90);
-        return new Vector2(theta, phi);
-    }
-}
