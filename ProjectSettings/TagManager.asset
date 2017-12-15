@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Shootable
+  - cube
+  - desk
+  - leftObject
+  - rightObject
   layers:
   - Default
   - TransparentFX

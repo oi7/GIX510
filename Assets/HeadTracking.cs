@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class eyetracking : MonoBehaviour
+public class HeadTracking : MonoBehaviour
 {
     public FoveInterface f;
     public GameObject objectL;
@@ -14,7 +14,6 @@ public class eyetracking : MonoBehaviour
     int countTime = 1;
     ArrayList successRate = new ArrayList();
     ArrayList selectionTime = new ArrayList();
-    public GameObject eyeR;
     // Use this for initialization
     void Start()
     {
@@ -24,31 +23,17 @@ public class eyetracking : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        FoveInterface.EyeRays rays = FoveInterface.GetEyeRays();
-        RaycastHit hitL;
-        RaycastHit hitR;
-        Physics.Raycast(rays.left, out hitL, Mathf.Infinity);
-        Physics.Raycast(rays.left, out hitR, Mathf.Infinity);
-        bool isHitL = Physics.Raycast(rays.left, out hitL, Mathf.Infinity);
-        bool isHitR = Physics.Raycast(rays.right, out hitR, Mathf.Infinity);
-        transform.position = hitL.point;
-        eyeR.transform.position = hitR.point;
-        if (hitL.point != Vector3.zero) // Vector3 is non-nullable; comparing to null is always false
-        {
-            transform.position = hitL.point;
-        }
-        else
-        {
-            transform.position = rays.left.GetPoint(3.0f);
-        }
+        RaycastHit hit;
+        Ray ray = new Ray(f.transform.position, f.transform.forward);
+        bool isHit = Physics.Raycast(ray, out hit, Mathf.Infinity);
 
-        if (hitR.point != Vector3.zero) // Vector3 is non-nullable; comparing to null is always false
+        if (hit.point != Vector3.zero) // Vector3 is non-nullable; comparing to null is always false
         {
-            transform.position = hitR.point;
+            transform.position = hit.point;
         }
         else
         {
-            transform.position = rays.right.GetPoint(3.0f);
+            transform.position = ray.GetPoint(3.0f);
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -58,7 +43,7 @@ public class eyetracking : MonoBehaviour
             {
                 startTimeL = Time.time;
                 healthLeft.Damage(countTime);
-                if (isHitL || isHitR)
+                if (isHit)
                 {
                     successRate.Add(1);
                     Debug.Log("LEFT Hit successfully");
@@ -74,7 +59,7 @@ public class eyetracking : MonoBehaviour
 
                 healthRight.Damage(countTime);
                 startTimeR = Time.time;
-                if (isHitL || isHitR)
+                if (isHit)
                 {
                     Debug.Log("Right Hit successfully");
                     successRate.Add(1);
@@ -91,5 +76,6 @@ public class eyetracking : MonoBehaviour
             Debug.Log(startTimeL + "-" + startTimeR + "=" + durationTime);
 
         }
+
     }
 }
